@@ -28,7 +28,7 @@ public class SecurityConfig {
                         request.requestMatchers("/api/admin/**").hasAnyRole("ADMIN","RESTAURANTOWNER").
                                 requestMatchers("/api/**").authenticated()
                                 .anyRequest().permitAll()
-                ).addFilter(new JwtValidator(), BasicAuthenticationFilter.class)
+                ).addFilterBefore(new JwtValidator(), BasicAuthenticationFilter.class)
                 .csrf(csrf -> csrf.disable())
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()));
         return null;
