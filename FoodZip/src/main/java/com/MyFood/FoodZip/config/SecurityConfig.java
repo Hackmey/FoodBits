@@ -25,13 +25,13 @@ public class SecurityConfig {
     SecurityFilterChain securityFilterChain (HttpSecurity http) throws Exception{
         http.sessionManagement( session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(request ->
-                        request.requestMatchers("/api/admin/**").hasAnyRole("ADMIN","RESTAURANTOWNER").
+                        request.requestMatchers("/api/admin/**").hasAnyRole("ADMIN","RESTAURANT_OWNER").
                                 requestMatchers("/api/**").authenticated()
                                 .anyRequest().permitAll()
                 ).addFilterBefore(new JwtValidator(), BasicAuthenticationFilter.class)
                 .csrf(csrf -> csrf.disable())
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()));
-        return null;
+        return http.build();
     }
 
     private CorsConfigurationSource corsConfigurationSource(){

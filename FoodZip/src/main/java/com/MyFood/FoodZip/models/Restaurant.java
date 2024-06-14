@@ -34,6 +34,10 @@ public class Restaurant {
 
     private String openingHours;
 
+    @ElementCollection
+    List<String> images = new ArrayList<>();
+
+
 //    reviews;
 
     @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL, orphanRemoval = true)
