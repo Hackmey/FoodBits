@@ -7,7 +7,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Ingredients {
@@ -22,6 +21,46 @@ public class Ingredients {
     @JsonIgnore
     @ManyToOne
     private Restaurant restaurant;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public IngredientCategory getIngredientCategory() {
+        return ingredientCategory;
+    }
+
+    public void setIngredientCategory(IngredientCategory ingredientCategory) {
+        this.ingredientCategory = ingredientCategory;
+    }
+
+    public Restaurant getRestaurant() {
+        return restaurant;
+    }
+
+    public void setRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
+    }
+
+    public boolean isInStock() {
+        return inStock;
+    }
+
+    public void setInStock(boolean inStock) {
+        this.inStock = inStock;
+    }
 
     private boolean inStock=true;
 }
